@@ -7,11 +7,9 @@ import App from "./App";
 import { HomePage } from "./pages/HomePage/HomePage";
 
 import { NotFoundPage } from "./pages//NotFoundPage/NotFoundPage";
-import ComparePage from "./pages/ComparePage/ComparePage";
-import StatusPage from "./pages/StatusPage/StatusPage";
-import InvestmentPage from "./pages/InvestmentPage/InvestmentPage";
 import { ComparisonResultPage } from "./pages/ComparisonResultPage/ComparisonResultPage";
 import CompanyDetail from "./pages/CompanyDetailPage/CompanyDetail";
+
 
 const router = createBrowserRouter([
   {
@@ -20,11 +18,11 @@ const router = createBrowserRouter([
     errorElement: <NotFoundPage />, // 에러 페이지 설정
     children: [
       { index: true, element: <HomePage /> }, // 기본 페이지
-      { path: "/compare", element: <ComparePage /> },
       { path: "/comparisonResult", element: <ComparisonResultPage /> },
-      { path: "/status", element: <StatusPage /> },
-      { path: "/investment", element: <InvestmentPage /> },
       { path: "/companyDetail", element: <CompanyDetail /> },
+      { path : '/compare', element : <Compare />},
+      { path : '/status', element : <Status />},
+      { path : '/investment', element : <Investment />},
     ],
   },
 ]);

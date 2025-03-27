@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "scripts": {
     "dev": "nodemon src/app.js"
   },
@@ -19,5 +20,26 @@
   "prisma": {
     "schema": "./src/db/prisma/schema.prisma",
     "seed": "node src/db/prisma/seed.js"
+=======
+  "name": "backend",
+  "version": "1.0.0",
+  "main": "src/app.js",
+  "scripts": {
+    "start": "node src/app.js",
+    "dev": "nodemon src/app.js",
+    "generate": "npx prisma generate --schema=src/db/prisma/schema.prisma",
+    "migrate": "npx prisma migrate dev --name init --schema=src/db/prisma/schema.prisma",
+    "reset": "npx prisma migrate reset --schema=src/db/prisma/schema.prisma",
+    "seed": "node src/seed.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "@prisma/client": "^4.8.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20",
+    "prisma": "^4.8.0"
+>>>>>>> 68de193 ('test')
   }
 }
