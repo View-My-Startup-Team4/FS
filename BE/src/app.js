@@ -7,6 +7,7 @@ app.use(cors());
 app.use(express.json());
 app.use("/", mainRouter);
 
+
 // 메인 페이지 - 서버 상태 확인용
 app.get("/", (req, res) => {
   res.send("Express 서버가 정상적으로 실행 중입니다!");

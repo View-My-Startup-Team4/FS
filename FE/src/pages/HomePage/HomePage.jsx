@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styles from "./HomePage.module.scss";
+import TopGroupLayout from "../../components/TopGroupLayout/TopGroupLayout";
 import Title from "../../components/Title/Title";
 import Search from "../../components/HomePage/HomePageBoardSearch/HomePageBoardSearch";
 import Filter from "../../components/HomePage/HomePageBoardFilter/HomePageBoardFilter";
@@ -9,17 +10,17 @@ import MiddleGroupLayout from "../../components/MiddleGroupLayout/MiddleGroupLay
 import Error from "../../common/Error/Error";
 import IsLoading from "../../common/IsLoading/IsLoading";
 import { useBoardList } from "../../context/BoardListContext";
-import TopGroupLayout from "../../components/TopGroupLayout/TopGroupLayout";
 
 const titleList = [
   { title: '순위', flex: 'flex-[2]' },
   { title: '기업명', flex: 'flex-[6]' },
   { title: '기업 소개', flex: 'flex-[9]' },
   { title: '카테고리', flex: 'flex-[5]' },
-  { title: '누적 투작 금액', flex: 'flex-[5]' },
+  { title: '누적 투자 금액', flex: 'flex-[5]' },
   { title: '매출액', flex: 'flex-[5]' },
   { title: '고용인원', flex: 'flex-[5]' },
 ]
+
 
 export const HomePage = () => {
   const [list, setList] = useState([]);
@@ -69,7 +70,6 @@ export const HomePage = () => {
         <BoardTitleBar titleList={titleList} />
         <BoardList companies={paginatedList} fields={['name', 'description','category', 'totalInvestment',  'totalProfit', 'employeeCount']}/>
       </MiddleGroupLayout>
- 
     </section>
   );
 };
