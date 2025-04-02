@@ -4,6 +4,22 @@ import styles from "./HomePage.module.scss";
 import Title from "../../components/Title/Title";
 import Search from "../../components/HomePage/HomePageBoardSearch/HomePageBoardSearch";
 import Filter from "../../components/HomePage/HomePageBoardFilter/HomePageBoardFilter";
+import BoardTitleBar from "../../components/BoardTitleBar/BoardTitleBar";
+import BoardList from "../../components/BoardList/BoardList";
+import MiddleGroupLayout from "../../components/MiddleGroupLayout/MiddleGroupLayout";
+import Error from "../../common/Error/Error";
+import IsLoading from "../../common/IsLoading/IsLoading";
+import { useBoardList } from "../../context/BoardListContext";
+
+const titleList = [
+  { title: '순위', flex: 'flex-[2]' },
+  { title: '기업명', flex: 'flex-[6]' },
+  { title: '기업 소개', flex: 'flex-[9]' },
+  { title: '카테고리', flex: 'flex-[5]' },
+  { title: '누적 투작 금액', flex: 'flex-[5]' },
+  { title: '매출액', flex: 'flex-[5]' },
+  { title: '고용인원', flex: 'flex-[5]' },
+]
 
 export const HomePage = () => {
   const [list, setList] = useState([]);
@@ -43,6 +59,10 @@ export const HomePage = () => {
     fetchList();
   }, []);
 
+  const { companies , error, isLoading } = useBoardList();
+  if(isLoading) return <IsLoading />
+  if(error) return <Error />
+
   return (
     <section>
       <div className={styles.headerRow}>
@@ -55,6 +75,11 @@ export const HomePage = () => {
         />
         <Filter />
       </div>
+
+      <MiddleGroupLayout>
+        <BoardTitleBar titleList={titleList} />
+        <BoardList companies={companies} fields={['description','countMyPicked','totalProfit']}/>
+      </MiddleGroupLayout>
     </section>
   );
 };
