@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { getList } from "../../api";
 import styles from "./HomePage.module.scss";
 import Title from "../../components/Title/Title";
 import Search from "../../components/HomePage/HomePageBoardSearch/HomePageBoardSearch";
@@ -10,6 +9,7 @@ import MiddleGroupLayout from "../../components/MiddleGroupLayout/MiddleGroupLay
 import Error from "../../common/Error/Error";
 import IsLoading from "../../common/IsLoading/IsLoading";
 import { useBoardList } from "../../context/BoardListContext";
+import TopGroupLayout from "../../components/TopGroupLayout/TopGroupLayout";
 
 const titleList = [
   { title: '순위', flex: 'flex-[2]' },
@@ -30,13 +30,19 @@ export const HomePage = () => {
   const [filteredList, setFilteredList] = useState([]);
   const itemsPerPage = 10;
 
+
+  const { companies , error, isLoading } = useBoardList();
+  if(isLoading) return <IsLoading />
+  if(error) return <Error />
+  
+  const filteredCompany = companies.filter((company) =>
+    company.name.toLowerCase().includes(searchKeyword.toLowerCase())
+  );
+  
   const handleOrderChange = (orderBy) => {
     setCurrentState(orderBy);
   };
 
-  const filteredCompany = (list || []).filter((company) =>
-    company.name.toLowerCase().includes(searchKeyword.toLowerCase())
-  );
 
   const totalPages = Math.ceil(filteredCompany.length / itemsPerPage);
 
@@ -45,41 +51,25 @@ export const HomePage = () => {
     currentPage * itemsPerPage
   );
 
-  useEffect(() => {
-    const fetchList = async () => {
-      try {
-        const data = await getList();
-        console.log(data);
-        setList(data);
-      } catch (e) {
-        console.log(e);
-      }
-    };
-
-    fetchList();
-  }, []);
-
-  const { companies , error, isLoading } = useBoardList();
-  if(isLoading) return <IsLoading />
-  if(error) return <Error />
+  
 
   return (
     <section>
-      <div className={styles.headerRow}>
-        <Title text={"전체 스타트업 목록"} />
-        <Search
-          searchInput={searchInput}
-          setSearchInput={setSearchInput}
-          setSearchKeyword={setSearchKeyword}
-          setCurrentPage={setCurrentPage}
-        />
-        <Filter />
-      </div>
-
+        <TopGroupLayout >
+          <Title text={"전체 스타트업 목록"}/>
+          <Search
+              searchInput={searchInput}
+              setSearchInput={setSearchInput}
+              setSearchKeyword={setSearchKeyword}
+              setCurrentPage={setCurrentPage}
+          />
+          <Filter />
+        </TopGroupLayout>
       <MiddleGroupLayout>
         <BoardTitleBar titleList={titleList} />
-        <BoardList companies={companies} fields={['description','countMyPicked','totalProfit']}/>
+        <BoardList companies={paginatedList} fields={['name', 'description','countMyPicked','totalProfit']}/>
       </MiddleGroupLayout>
+ 
     </section>
   );
 };
