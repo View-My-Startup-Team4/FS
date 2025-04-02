@@ -55,19 +55,19 @@ export const HomePage = () => {
 
   return (
     <section>
-        <TopGroupLayout >
-          <Title text={"전체 스타트업 목록"}/>
-          <Search
-              searchInput={searchInput}
-              setSearchInput={setSearchInput}
-              setSearchKeyword={setSearchKeyword}
-              setCurrentPage={setCurrentPage}
-          />
-          <Filter />
-        </TopGroupLayout>
+      <TopGroupLayout >
+        <Title text={"전체 스타트업 목록"}/>
+        <Search
+            searchInput={searchInput}
+            setSearchInput={setSearchInput}
+            setSearchKeyword={setSearchKeyword}
+            setCurrentPage={setCurrentPage}
+        />
+        <Filter />
+      </TopGroupLayout>
       <MiddleGroupLayout>
         <BoardTitleBar titleList={titleList} />
-        <BoardList companies={paginatedList} fields={['name', 'description','countMyPicked','totalProfit']}/>
+        <BoardList companies={paginatedList} fields={['name', 'description','category', 'totalInvestment',  'totalProfit', 'employeeCount']}/>
       </MiddleGroupLayout>
  
     </section>

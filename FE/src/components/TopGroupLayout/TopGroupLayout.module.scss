@@ -9,7 +9,8 @@
     gap: 0.5rem;
 
     @media only screen and (min-width: 23.375rem) and (max-width: 46.4375rem) {
-
+        flex-wrap: wrap;
+        padding: 0 1.25rem;
   }
 
     @media only screen and  (min-width: 0 ) and (max-width: 23.374rem) {
