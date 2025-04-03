@@ -8,8 +8,12 @@ import PaseNationButton from "../../components/CompanyDetailPage/PaseNationButto
 import companydetail from "./data/companydetail.json";
 import invest from "./data/invest.json";
 import logo from "../../../public/images/companies/네이버.png";
+import { useParams } from "react-router-dom";
 
 export function CompanyDetailPage() {
+  const { companyId } = useParams();
+  console.log(companyId)
+  
   const companydetaildata = companydetail;
   const investdatas = invest;
 

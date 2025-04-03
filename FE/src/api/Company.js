@@ -4,7 +4,16 @@ import { instance, safeExecute } from "./Common.js";
 export const getCompanyList = async () => {
   return safeExecute(async () => {
     const res = await instance.get(`/company`);
+    console.log(res)
+    return res.data;
+  });
+};
 
+//전체 회사 리스트 가져오기
+export const getInvestedCompanies = async () => {
+  return safeExecute(async () => {
+    const res = await instance.get(`/company/view`);
+    console.log(res)
     return res.data;
   });
 };

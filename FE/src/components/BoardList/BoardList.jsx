@@ -1,4 +1,12 @@
-export default function BoardList({ flex, companies, fields, itemsPerPage = 10 }) {
+import { useNavigate } from "react-router-dom";
+
+export default function BoardList({ flex, companies, fields, itemsPerPage = 10, unitSuffixes = []}) {
+  const navigate = useNavigate();
+
+  const handleDetail = (companyId) => {
+    navigate(`/detail/${companyId}`)
+  }
+
   return (
     <div className="rounded-[4px] overflow-hidden">
       <ul className="[&_*]:text-gray100 [&_*]:text-sm [&>li]:bg-black300">
@@ -6,8 +14,9 @@ export default function BoardList({ flex, companies, fields, itemsPerPage = 10 }
           return (
             <li
               key={index}
-              className="flex items-center min-h-16 border-b last:border-b-0"
+              className="flex items-center min-h-16 border-b last:border-b-0 hover:cursor-pointer hover:bg-[#2a2a2a]"
               style={{ borderBottomColor: '#4B4B4B' }}
+              onClick={() => handleDetail(company.id)}
             >
 
               <p className={`${flex[0]} flex items-center justify-center font-normal`}>
@@ -37,6 +46,7 @@ export default function BoardList({ flex, companies, fields, itemsPerPage = 10 }
                       />
                     )}
                     {company[field]}
+                    {unitSuffixes[idx]}
                   </p>
                 );
               })}

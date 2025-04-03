@@ -56,11 +56,9 @@ export default function StatusPage() {
   if (isLoading) return <IsLoading />;
   if (error) return <Error />;
 
-  // 정렬
   const sortedCompanies = [...companies].sort(selectedFilter.sortFn);
   const currentOffset = (currentPage - 1) * itemsPerPage;
 
-  // ✅ 순위 포함한 페이지 데이터 구성
   const pagedCompanies = sortedCompanies
     .slice(currentOffset, currentOffset + itemsPerPage)
     .map((company, index) => ({

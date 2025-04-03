@@ -34,7 +34,7 @@ export default function BoardTitleBar({titleList}) {
         >
         {
             titleList.map((list, index) => 
-                <li key={index} className={`${list.flex}`}>
+                <li key={index} className={`${list.flex} whitespace-nowrap`}>
                     {list.title}
                 </li>
             )
