@@ -41,6 +41,7 @@ investRouter.get("/:investId", async (req, res, next) => {
 });
 
 //특정 기업 투자정보 가져오기
+// TODO: [GET] /companies/:companyId/investments
 investRouter.get("/company/:companyId", async (req, res, next) => {
   try {
     const { companyId } = req.params;
@@ -68,7 +69,7 @@ investRouter.get("/company/:companyId/:page", async (req, res, next) => {
       take: pageSize,
       orderBy: {
         investmentAmount: "desc", // 투자금액을 기준으로 내림차순 정렬
-      },
+      }, // TODO: omit으로 password는 빼고 주세요~!
     });
 
     // 해당 회사의 투자 정보가 없으면 404 반환 //이거 빈배열 반환으로 바꾸기
@@ -83,6 +84,7 @@ investRouter.get("/company/:companyId/:page", async (req, res, next) => {
 });
 
 // 투자 정보 추가하기
+// TODO: password 암호화 안하고 있는 거 심각한 문제!
 investRouter.post("/", async (req, res, next) => {
   try {
     const Investdata = req.body;
@@ -104,6 +106,7 @@ investRouter.post("/", async (req, res, next) => {
 });
 
 // 투자 정보 수정하기
+// TODO: 비밀번호 검증 추가하기
 investRouter.put("/:investId", async (req, res, next) => {
   try {
     const { investId } = req.params;
@@ -134,6 +137,7 @@ investRouter.put("/:investId", async (req, res, next) => {
 });
 
 // 투자 정보 삭제하기
+// TODO: 비밀번호 검증 필요
 investRouter.delete("/:investId", async (req, res, next) => {
   try {
     const { investId } = req.params;

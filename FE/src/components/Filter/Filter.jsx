@@ -51,6 +51,7 @@ export default function Filter({
             <li
               key={index}
               onClick={(e) => {
+                // TODO: handleClick 만들어서 밖으로 빼기
                 e.stopPropagation(); //제가 전체를 버튼으로 만들어서.. button이벤트 막기.
                 onSelectFilter(option);
                 console.log(option.sort);

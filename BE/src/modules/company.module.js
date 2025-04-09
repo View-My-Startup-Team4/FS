@@ -13,6 +13,10 @@ companyRouter.get("/", async (req, res, next) => {
   }
 });
 
+// TODO: RESTful한 API 설계에서의 일반적인 url path
+// [GET] /companies  회사 목록
+// [GET] /companies/:companyId  회사 상세 정보 API
+
 // 회사 하나 정보로 가져오기 API
 companyRouter.get("/detail/:companyId", async (req, res, next) => {
   const { companyId } = req.params;
@@ -26,6 +30,7 @@ companyRouter.get("/detail/:companyId", async (req, res, next) => {
   }
 });
 
+// [GET] /companies/:companyId/compare?comapreCompanyIds=1,2,3,4,5
 // 회사 비교하기 API
 companyRouter.get("/compare/:myCompanyId", async (req, res, next) => {
   try {

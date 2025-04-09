@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
-import styles from "./Header.module.scss";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import mainPcLogo from "../../assets/images/logos/mainPcLogo.png";
+import styles from "./Header.module.scss";
 
 const pagesURL = ["compare", "status", "investment"];
 
+// TODO: 불필요한 로직 전부 제거할 것
 export default function Header() {
   const [selected, setSelected] = useState(null);
   const navigate = useNavigate();
