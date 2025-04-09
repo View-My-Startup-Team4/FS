@@ -1,11 +1,12 @@
 import React from "react";
-import styles from "./NotFoundPage.module.scss";
 import { useNavigate } from "react-router-dom";
+import styles from "./NotFoundPage.module.scss";
 
 export const NotFoundPage = () => {
   const navigate = useNavigate();
 
   const navigationItems = [
+    // TODO: index 필요 없음~ 지워 주세요~
     { label: "홈으로", idx: 0 },
     { label: "나의 기업 비교", idx: 1 },
     { label: "비교 현황", idx: 2 },

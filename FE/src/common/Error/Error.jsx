@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 export default function Error() {
   const navigate = useNavigate();
 
+  // TODO: idx 관련 제거
   const navigationItems = [
     { label: "Go Home", path: "/", state: { idx: 0 } },
     { label: "Try Again", path: "/", state: { idx: 2 } },

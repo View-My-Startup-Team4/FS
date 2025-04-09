@@ -1,5 +1,5 @@
 import React from "react";
-import { GrFormPrevious, GrFormNext } from "react-icons/gr";
+import { GrFormNext, GrFormPrevious } from "react-icons/gr";
 import styles from "./Pagination.module.scss";
 
 export default function Pagination({ currentPage, totalPages, onPageChange }) {
@@ -19,7 +19,7 @@ export default function Pagination({ currentPage, totalPages, onPageChange }) {
       </button>
 
       {pageNumbers.map((page) => {
-        const isCurrent = page === currentPage;
+        const isCurrent = page === currentPage; // TODO: 불필요한 코드 블럭.
         return (
           <button
             key={page}

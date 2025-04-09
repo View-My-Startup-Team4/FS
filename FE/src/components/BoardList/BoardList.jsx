@@ -23,7 +23,7 @@ export default function BoardList({
               key={index}
               className="flex items-center  min-h-16 border-b last:border-b-0  hover:cursor-pointer hover:bg-[#2a2a2a] "
               style={{ borderBottomColor: "#4B4B4B" }}
-              onClick={() => handleDetail(company.id)}
+              onClick={() => handleDetail(company.id)} // TODO: 가능하면 Link tag, a tag를 활용하자
             >
               <p
                 className={`${flex[0]} flex items-center justify-center font-normal`}
@@ -34,6 +34,7 @@ export default function BoardList({
               {fields.map((field, idx) => {
                 const isSecondOrThirdColumn = idx === 0 || idx === 1;
                 let value = company[field];
+                // TODO: UI를 그려야 하는 곳에 Business 로직 블록이 들어가는 것은 지양하자. 가독성에도 문제 있고 유지보수에 어려움이 있다.
 
                 if (
                   [

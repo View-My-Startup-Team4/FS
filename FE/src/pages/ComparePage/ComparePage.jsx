@@ -1,20 +1,20 @@
 import { useEffect, useState } from "react";
-import style from "./ComparePage.module.scss";
+import { useNavigate } from "react-router-dom";
 import { getComparedcompany } from "../../api/Company.js";
-import { MyCompany } from "../../components/ComparisonResultPage/MyCompany/MyCompany.jsx";
-import { CompareResult } from "../../components/ComparisonResultPage/CompareResult/CompareResult.jsx";
-import { CompanyRanking } from "../../components/ComparisonResultPage/CompanyRanking/CompanyRanking.jsx";
-import Modal from "../../components/ComparePage/Modal/Modal.jsx";
-import Title from "../../components/Title/Title.jsx";
+import ic_restart from "../../assets/images/icons/ic_restart.png";
+import Button from "../../components/ComparePage/Button/Button.jsx";
 import CompanyContainer from "../../components/ComparePage/CompanyContainer/CompanyContainer.jsx";
 import DashContainer from "../../components/ComparePage/DashContainer/DashContainer.jsx";
-import Button from "../../components/ComparePage/Button/Button.jsx";
-import { useNavigate } from "react-router-dom";
-import ic_restart from "../../assets/images/icons/ic_restart.png";
+import Modal from "../../components/ComparePage/Modal/Modal.jsx";
+import { CompanyRanking } from "../../components/ComparisonResultPage/CompanyRanking/CompanyRanking.jsx";
+import { CompareResult } from "../../components/ComparisonResultPage/CompareResult/CompareResult.jsx";
+import { MyCompany } from "../../components/ComparisonResultPage/MyCompany/MyCompany.jsx";
+import Title from "../../components/Title/Title.jsx";
+import style from "./ComparePage.module.scss";
 
 //투자하기 모달  임포트.
-import InvestAndChangeModal from "../../components/CompanyDetailPage/Modals/InvestAndChangeModal/InvestAndChangeModal.jsx";
 import { getCompanyInvest } from "../../api/Invest.js";
+import InvestAndChangeModal from "../../components/CompanyDetailPage/Modals/InvestAndChangeModal/InvestAndChangeModal.jsx";
 import { useModal } from "../../components/CompanyDetailPage/Modals/ModalContext/ModalContext.jsx";
 export default function ComparePage() {
   // 모달 오픈 유무 스테이트
@@ -84,7 +84,7 @@ export default function ComparePage() {
   }, [recentCompanies]);
 
   const handleNavigateDetailPage = (companyId) => {
-    navigate(`/detail/${companyId}`);
+    navigate(`/detail/${companyId}`); // TODO: 링크 태그를 써 주면 더 좋을듯
   };
 
   const removeCompareCompany = (companyId) => {
